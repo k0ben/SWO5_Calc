@@ -41,9 +41,17 @@ partial class Form1
         aboutToolStripMenuItem1 = new ToolStripMenuItem();
         clearToolStripMenuItem1 = new ToolStripMenuItem();
         closeToolStripMenuItem1 = new ToolStripMenuItem();
+        backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+        menuStrip1 = new MenuStrip();
+        menuToolStripMenuItem = new ToolStripMenuItem();
+        aboutToolStripMenuItem = new ToolStripMenuItem();
+        clearToolStripMenuItem = new ToolStripMenuItem();
+        closeToolStripMenuItem = new ToolStripMenuItem();
+        label1 = new Label();
         tableLayoutPanel1.SuspendLayout();
         flowLayoutPanel1.SuspendLayout();
         contextMenuStrip4.SuspendLayout();
+        menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
         // tableLayoutPanel1
@@ -53,12 +61,13 @@ partial class Form1
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.5F));
         tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 1);
         tableLayoutPanel1.Controls.Add(richTextBox1, 0, 0);
-        tableLayoutPanel1.Location = new Point(0, 0);
+        tableLayoutPanel1.Controls.Add(label1, 1, 0);
+        tableLayoutPanel1.Location = new Point(0, 62);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
         tableLayoutPanel1.RowCount = 2;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 31.11111F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 68.8888855F));
-        tableLayoutPanel1.Size = new Size(800, 450);
+        tableLayoutPanel1.Size = new Size(800, 388);
         tableLayoutPanel1.TabIndex = 0;
         // 
         // flowLayoutPanel1
@@ -69,9 +78,9 @@ partial class Form1
         flowLayoutPanel1.Controls.Add(btnAdd);
         flowLayoutPanel1.Controls.Add(btnEqual);
         flowLayoutPanel1.Dock = DockStyle.Fill;
-        flowLayoutPanel1.Location = new Point(695, 143);
+        flowLayoutPanel1.Location = new Point(695, 123);
         flowLayoutPanel1.Name = "flowLayoutPanel1";
-        flowLayoutPanel1.Size = new Size(102, 304);
+        flowLayoutPanel1.Size = new Size(102, 262);
         flowLayoutPanel1.TabIndex = 1;
         // 
         // btnMult
@@ -130,7 +139,7 @@ partial class Form1
         richTextBox1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
         richTextBox1.Location = new Point(3, 3);
         richTextBox1.Name = "richTextBox1";
-        richTextBox1.Size = new Size(686, 134);
+        richTextBox1.Size = new Size(686, 114);
         richTextBox1.TabIndex = 2;
         richTextBox1.Text = "";
         // 
@@ -163,18 +172,72 @@ partial class Form1
         closeToolStripMenuItem1.Text = "Close";
         closeToolStripMenuItem1.Click += closeToolStripMenuItem1_Click;
         // 
+        // menuStrip1
+        // 
+        menuStrip1.ImageScalingSize = new Size(20, 20);
+        menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
+        menuStrip1.Location = new Point(0, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Size = new Size(800, 28);
+        menuStrip1.TabIndex = 1;
+        menuStrip1.Text = "menuStrip1";
+        // 
+        // menuToolStripMenuItem
+        // 
+        menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem, clearToolStripMenuItem, closeToolStripMenuItem });
+        menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+        menuToolStripMenuItem.Size = new Size(60, 24);
+        menuToolStripMenuItem.Text = "menu";
+        // 
+        // aboutToolStripMenuItem
+        // 
+        aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+        aboutToolStripMenuItem.Size = new Size(131, 26);
+        aboutToolStripMenuItem.Text = "about";
+        aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
+        // 
+        // clearToolStripMenuItem
+        // 
+        clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+        clearToolStripMenuItem.Size = new Size(131, 26);
+        clearToolStripMenuItem.Text = "clear";
+        clearToolStripMenuItem.Click += clearToolStripMenuItem_Click;
+        // 
+        // closeToolStripMenuItem
+        // 
+        closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+        closeToolStripMenuItem.Size = new Size(131, 26);
+        closeToolStripMenuItem.Text = "close";
+        closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Location = new Point(695, 0);
+        label1.Name = "label1";
+        label1.Size = new Size(50, 20);
+        label1.TabIndex = 3;
+        label1.Text = "label1";
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        Controls.Add(menuStrip1);
         Controls.Add(tableLayoutPanel1);
+        MainMenuStrip = menuStrip1;
         Name = "Form1";
         Text = "Form1";
+        Load += Form1_Load;
         tableLayoutPanel1.ResumeLayout(false);
+        tableLayoutPanel1.PerformLayout();
         flowLayoutPanel1.ResumeLayout(false);
         contextMenuStrip4.ResumeLayout(false);
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -191,4 +254,11 @@ partial class Form1
     private Button btnAdd;
     private Button btnEqual;
     private RichTextBox richTextBox1;
+    private System.ComponentModel.BackgroundWorker backgroundWorker1;
+    private MenuStrip menuStrip1;
+    private ToolStripMenuItem menuToolStripMenuItem;
+    private ToolStripMenuItem aboutToolStripMenuItem;
+    private ToolStripMenuItem clearToolStripMenuItem;
+    private ToolStripMenuItem closeToolStripMenuItem;
+    private Label label1;
 }

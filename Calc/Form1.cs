@@ -6,6 +6,7 @@ namespace Calc
         {
             InitializeComponent();
             InitializeGrid();
+            this.ContextMenuStrip = contextMenuStrip4;
         }
         int Number { get; set; }
         int Result { get; set; }
@@ -57,11 +58,11 @@ namespace Calc
             Button button = (Button)sender;
             var position = grid.GetCellPosition(button);
             clickCounter.IncrementCount(position.Row, position.Column);
-            //label1.Text = $"Button {button.Text} clicked at position " +
-                //$"({position.Row} {position.Column})";
+            label1.Text = $"Button {button.Text} clicked at position " +
+                $"({position.Row} {position.Column})";
 
             int counter = clickCounter.GetCount(position.Row, position.Column);
-            //label1.Text += "was clicked x times: " + counter;
+            label1.Text += "was clicked x times: " + counter;
             button.BackColor = Color.FromArgb(counter * 10 % 256, counter * 10 % 256, 255);
 
             int input;
@@ -127,7 +128,7 @@ namespace Calc
                         // Point to plus method
                         CurrentOperation = (x, y) => x + y;
                         break;
-                    //case ...
+                        //case ...
                 }
                 MakeCalculation(CurrentOperation);
                 UpdateCalcTextBox($" {operatorSign} ");
@@ -141,6 +142,33 @@ namespace Calc
             Number = 0;
             richTextBox1.Text = Result.ToString();
             //label1.Text = Result.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is a simple calculator", "About", MessageBoxButtons.OK);
+            AboutDialog dialog = new AboutDialog();
+            dialog.changeLabel("MESSAGE FROM CALC");
+            dialog.ShowDialog();
+            dialog.Dispose();
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Result = 0;
+            label1.Text = "";
+            richTextBox1.Text = "";
+            CurrentOperation = null;
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
